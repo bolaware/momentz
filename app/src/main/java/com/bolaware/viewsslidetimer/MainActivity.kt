@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity(), ProgressStoryCallback {
         val internetLoadedVideo = VideoView(this)
 
         val listOfViews = listOf(
-            SliderView(textView, 5),
-            SliderView(customView, 5),
-            SliderView(locallyLoadedImageView, 6),
-            SliderView(internetLoadedImageView, 10),
+            SliderView(textView, 3),
+            SliderView(customView, 2),
+            SliderView(locallyLoadedImageView, 3),
+            SliderView(internetLoadedImageView, 3),
             SliderView(internetLoadedVideo, 60)
         )
 
