@@ -16,6 +16,7 @@ import com.bolaware.viewstimerstory.ProgressStory
 import com.bolaware.viewstimerstory.ProgressStoryCallback
 import com.bolaware.viewstimerstory.SliderView
 import com.squareup.picasso.Callback
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import toPixel
 import java.lang.Exception
@@ -77,6 +78,7 @@ class MainActivity : AppCompatActivity(), ProgressStoryCallback {
             progressStory.pause(true)
             Picasso.get()
                 .load("https://i.pinimg.com/564x/14/90/af/1490afa115fe062b12925c594d93a96c.jpg")
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(view, object : Callback {
                     override fun onSuccess() {
                         progressStory.resume()
