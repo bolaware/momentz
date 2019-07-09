@@ -12,9 +12,9 @@ import android.net.Uri
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.VideoView
-import com.bolaware.viewstimerstory.ProgressStory
-import com.bolaware.viewstimerstory.ProgressStoryCallback
-import com.bolaware.viewstimerstory.SliderView
+import com.bolaware.viewstimerstory.Momentz
+import com.bolaware.viewstimerstory.MomentzCallback
+import com.bolaware.viewstimerstory.MomentzView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
@@ -22,7 +22,7 @@ import toPixel
 import java.lang.Exception
 
 
-class MainActivity : AppCompatActivity(), ProgressStoryCallback {
+class MainActivity : AppCompatActivity(), MomentzCallback {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,29 +59,29 @@ class MainActivity : AppCompatActivity(), ProgressStoryCallback {
         val internetLoadedVideo = VideoView(this)
 
         val listOfViews = listOf(
-            SliderView(textView, 3),
-            SliderView(customView, 2),
-            SliderView(locallyLoadedImageView, 3),
-            SliderView(internetLoadedImageView, 3),
-            SliderView(internetLoadedVideo, 60)
+            MomentzView(textView, 5),
+            MomentzView(customView, 5),
+            MomentzView(locallyLoadedImageView, 6),
+            MomentzView(internetLoadedImageView, 10),
+            MomentzView(internetLoadedVideo, 60)
         )
 
-        ProgressStory(this, listOfViews, container, this).start()
+        Momentz(this, listOfViews, container, this).start()
     }
 
 
-    override fun onNextCalled(view: View, progressStory: ProgressStory, index: Int) {
+    override fun onNextCalled(view: View, momentz: Momentz, index: Int) {
         if (view is VideoView) {
-            progressStory.pause(true)
-            playVideo(view, index, progressStory)
+            momentz.pause(true)
+            playVideo(view, index, momentz)
         } else if ((view is ImageView) && (view.drawable == null)) {
-            progressStory.pause(true)
+            momentz.pause(true)
             Picasso.get()
                 .load("https://i.pinimg.com/564x/14/90/af/1490afa115fe062b12925c594d93a96c.jpg")
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(view, object : Callback {
                     override fun onSuccess() {
-                        progressStory.resume()
+                        momentz.resume()
                         Toast.makeText(this@MainActivity, "Image loaded from the internet", Toast.LENGTH_LONG).show()
                     }
 
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), ProgressStoryCallback {
         Toast.makeText(this@MainActivity, "Finished!", Toast.LENGTH_LONG).show()
     }
 
-    fun playVideo(videoView: VideoView, index: Int, progressStory: ProgressStory) {
+    fun playVideo(videoView: VideoView, index: Int, momentz: Momentz) {
         val str = "https://download.blender.org/durian/trailer/sintel_trailer-720p.mp4"
         val uri = Uri.parse(str)
 
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity(), ProgressStoryCallback {
             override fun onInfo(mp: MediaPlayer?, what: Int, extra: Int): Boolean {
                 if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
                     // Here the video starts
-                    progressStory.editDurationAndResume(index, (videoView.duration) / 1000)
+                    momentz.editDurationAndResume(index, (videoView.duration) / 1000)
                     Toast.makeText(this@MainActivity, "Video loaded from the internet", Toast.LENGTH_LONG).show()
                     return true
                 }

@@ -15,12 +15,12 @@ import android.view.GestureDetector.SimpleOnGestureListener
 import java.lang.Exception
 
 
-class ProgressStory : ConstraintLayout {
+class Momentz : ConstraintLayout {
     private var currentlyShownIndex = 0
     private lateinit var currentView: View
-    private var sliderViewList: List<SliderView>
+    private var momentzViewList: List<MomentzView>
     private var libSliderViewList = mutableListOf<MyProgressBar>()
-    private var progressStoryCallback : ProgressStoryCallback
+    private var momentzCallback : MomentzCallback
     private lateinit var view: View
     private val passedInContainerView: ViewGroup
     private var mProgressDrawable : Int = R.drawable.green_lightgrey_drawable
@@ -29,13 +29,13 @@ class ProgressStory : ConstraintLayout {
 
     constructor(
         context: Context,
-        sliderViewList: List<SliderView>,
+        momentzViewList: List<MomentzView>,
         passedInContainerView: ViewGroup,
-        progressStoryCallback: ProgressStoryCallback,
+        momentzCallback: MomentzCallback,
         @DrawableRes mProgressDrawable : Int = R.drawable.green_lightgrey_drawable
     ) : super(context) {
-        this.sliderViewList = sliderViewList
-        this.progressStoryCallback = progressStoryCallback
+        this.momentzViewList = momentzViewList
+        this.momentzCallback = momentzCallback
         this.passedInContainerView = passedInContainerView
         this.mProgressDrawable = mProgressDrawable
         initView()
@@ -43,7 +43,7 @@ class ProgressStory : ConstraintLayout {
     }
 
     private fun init() {
-        sliderViewList.forEachIndexed { index, sliderView ->
+        momentzViewList.forEachIndexed { index, sliderView ->
             val myProgressBar = MyProgressBar(
                 context,
                 index,
@@ -142,11 +142,11 @@ class ProgressStory : ConstraintLayout {
             }
         }
 
-        currentView = sliderViewList[currentlyShownIndex].view
+        currentView = momentzViewList[currentlyShownIndex].view
 
         libSliderViewList[currentlyShownIndex].startProgress()
 
-        progressStoryCallback.onNextCalled(currentView, this, currentlyShownIndex)
+        momentzCallback.onNextCalled(currentView, this, currentlyShownIndex)
 
         view.currentlyDisplayedView.removeAllViews()
         view.currentlyDisplayedView.addView(currentView)
@@ -179,16 +179,16 @@ class ProgressStory : ConstraintLayout {
             view.loaderProgressbar.visibility = View.VISIBLE
         }
         libSliderViewList[currentlyShownIndex].pauseProgress()
-        if(sliderViewList[currentlyShownIndex].view is VideoView){
-            (sliderViewList[currentlyShownIndex].view as VideoView).pause()
+        if(momentzViewList[currentlyShownIndex].view is VideoView){
+            (momentzViewList[currentlyShownIndex].view as VideoView).pause()
         }
     }
 
     fun resume() {
         view.loaderProgressbar.visibility = View.GONE
         libSliderViewList[currentlyShownIndex].resumeProgress()
-        if(sliderViewList[currentlyShownIndex].view is VideoView){
-            (sliderViewList[currentlyShownIndex].view as VideoView).start()
+        if(momentzViewList[currentlyShownIndex].view is VideoView){
+            (momentzViewList[currentlyShownIndex].view as VideoView).start()
         }
     }
 
@@ -198,9 +198,9 @@ class ProgressStory : ConstraintLayout {
 
     fun next() {
         try {
-            if (currentView == sliderViewList[currentlyShownIndex].view) {
+            if (currentView == momentzViewList[currentlyShownIndex].view) {
                 currentlyShownIndex++
-                if (sliderViewList.size <= currentlyShownIndex) {
+                if (momentzViewList.size <= currentlyShownIndex) {
                     finish()
                     return
                 }
@@ -212,7 +212,7 @@ class ProgressStory : ConstraintLayout {
     }
 
     private fun finish() {
-        progressStoryCallback.done()
+        momentzCallback.done()
         for (progressBar in libSliderViewList) {
             progressBar.cancelProgress()
             progressBar.progress = 100
@@ -221,7 +221,7 @@ class ProgressStory : ConstraintLayout {
 
     fun prev() {
         try {
-            if (currentView == sliderViewList[currentlyShownIndex].view) {
+            if (currentView == momentzViewList[currentlyShownIndex].view) {
                 currentlyShownIndex--
                 if (0 > currentlyShownIndex) {
                     currentlyShownIndex = 0
