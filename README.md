@@ -20,7 +20,7 @@ into it(`ImageView`, `VideoView`, `ViewGroups` etc).
 **Step 2.** Add the dependency
 
     dependencies {
-	     implementation 'com.github.bolaware:momentz:1.0'
+	     implementation 'com.github.bolaware:momentz:v1.0'
 	}
 	
 ### Initiate
