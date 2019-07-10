@@ -1,8 +1,8 @@
 <img src="Logo.png" width="200" alt="Momentz android library">
 
-    Momentz is an android library for showing timed view just like Snapchat, 
-    Facebook and Instagram stories.You can embed any type of view 
-    into it(`ImageView`, `VideoView`, `ViewGroups` etc). 
+Momentz is an android library for showing timed view just like Snapchat, 
+Facebook and Instagram stories.You can embed any type of view 
+into it(`ImageView`, `VideoView`, `ViewGroups` etc). 
 
 <img src="momentz_demo.gif" alt="Momentz android library for instagram, facebook, snapchat library" width="200" height="400">
 
