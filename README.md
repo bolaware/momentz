@@ -1,7 +1,9 @@
 <img src="Logo.png" width="200" alt="Momentz android library">
-
-    Momentz is an android library for showing timed view just like Snapchat, Facebook and Instagram stories. 
-    You can embed any type of view into it(`ImageView`, `VideoView`, `ViewGroups` etc)
+```
+Momentz is an android library for showing timed view just like Snapchat, 
+Facebook and Instagram stories.You can embed any type of view 
+into it(`ImageView`, `VideoView`, `ViewGroups` etc). 
+```
 <img src="momentz_demo.gif" alt="Momentz android library for instagram, facebook, snapchat library" width="200" height="400">
 
 ### Adding it to your project
@@ -36,7 +38,7 @@ You can checkout the sample app in the project, initiating Momentz is as simple 
 
 You can start, pause, resume, go to next and previous using these methods respectively `Momentz.start()`, `Momentz.pause()`, `Momentz.resume()`, `Momentz.next()`, `Momentz.prev()`.
 
-[Check out the way I used it in the my app's MainActivity](https://github.com/bolaware/momentz/blob/master/app/src/main/java/com/bolaware/viewsslidetimer/MainActivity.kt)
+Run the project's app and [Check out the way I used it in the my app's MainActivity](https://github.com/bolaware/momentz/blob/master/app/src/main/java/com/bolaware/viewsslidetimer/MainActivity.kt)
 
 ```
 Momentz
