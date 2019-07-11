@@ -1,5 +1,7 @@
 <img src="Logo.png" width="200" alt="Momentz android library">
+
 [![](https://jitpack.io/v/bolaware/momentz.svg)](https://jitpack.io/#bolaware/momentz)
+
 Momentz is an android library for showing timed view just like Snapchat, 
 Facebook and Instagram stories.You can embed any type of view 
 into it(`ImageView`, `VideoView`, `ViewGroups` etc). 
