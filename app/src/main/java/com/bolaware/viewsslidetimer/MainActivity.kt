@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(), MomentzCallback {
     }
 
     fun playVideo(videoView: VideoView, index: Int, momentz: Momentz) {
-        val str = "https://download.blender.org/durian/trailer/sintel_trailer-720p.mp4"
+        val str = "https://images.all-free-download.com/footage_preview/mp4/triumphal_arch_paris_traffic_cars_326.mp4"
         val uri = Uri.parse(str)
 
         videoView.setVideoURI(uri)
