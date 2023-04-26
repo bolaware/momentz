@@ -1,3 +1,6 @@
+# Deprecated
+***Please note this library is no longer supported, kindly look for other alternatives libraries.***
+
 <img src="Logo.png" width="200" alt="Momentz android library">
 
 [![](https://jitpack.io/v/bolaware/momentz.svg)](https://jitpack.io/#bolaware/momentz)
