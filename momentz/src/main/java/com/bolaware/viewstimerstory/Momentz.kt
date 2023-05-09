@@ -178,9 +178,12 @@ class Momentz : ConstraintLayout {
         if(withLoader){
             view.loaderProgressbar.visibility = View.VISIBLE
         }
-        libSliderViewList[currentlyShownIndex].pauseProgress()
-        if(momentzViewList[currentlyShownIndex].view is VideoView){
-            (momentzViewList[currentlyShownIndex].view as VideoView).pause()
+       // preventing possible index bound exception
+       if (currentlyShownIndex < libSliderViewList.size) {
+            libSliderViewList[currentlyShownIndex].pauseProgress()
+            if (momentzViewList[currentlyShownIndex].view is VideoView) {
+                (momentzViewList[currentlyShownIndex].view as VideoView).pause()
+            }
         }
     }
 
